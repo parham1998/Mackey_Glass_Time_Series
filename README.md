@@ -36,7 +36,12 @@ This method is very similar to the SGD method but uses the previous step error t
 ![Screenshot (552)](https://user-images.githubusercontent.com/85555218/145407619-0cf84761-8597-4807-b729-3d222ad995f8.png)
 
 *3: adaptive learning rate* <br />
-In this method, we assign a different learning rate to each of the trainable parameters, which are called adaptive learning rates. For each element of the weights matrix, we consider a different learning rate, which is also trained during the learning process. (As I said before, this method has more learning parameters (twice as much as before), and MSE might fluctuate and need more time for training.)
+In this method, we assign a different learning rate to each of the trainable parameters, which are called adaptive learning rates. For each element of the weights matrix, we consider a different learning rate, which is also trained during the learning process. (As I said before, this method has more learning parameters (twice as much as before), and MSE might fluctuate and need more time for training).
 ![Screenshot (553)](https://user-images.githubusercontent.com/85555218/145407636-28acfd04-20b2-47f4-b72c-19b7c3385a7f.png)
 
 *4: levenberg marquardt* <br />
+This algorithm is a generalization of the Gauss-Newton algorithm, designed to increase the convergence speed of the second-order optimization. If 𝜇(𝑡) equals zero, the algorithm is the same as the Gauss-Newton algorithm, and if 𝜇(𝑡) is a large number, this algorithm is very similar to SGD. This is a batch-based method. In other words, unlike the above methods, we do not update the parameters after the arrival of the new training sample, but the parameters will be updated after the arrival of all the training samples. After each epoch, parameters are updated based on the jacobian matrix, which stores all epoch information. (This method is appropriate for the low number of data, and by increasing the data size, the volume of calculations increases sharply).
+![Screenshot (554)](https://user-images.githubusercontent.com/85555218/145471547-33293f0f-aa76-4a4e-a2cc-14564f5bb3ca.png)
+
+The image below shows that the best result for the network is achieved with the Levenberg Marquardt algorithm:
+![Figure 2021-12-10 002638](https://user-images.githubusercontent.com/85555218/145474510-bc28aa65-c134-45b2-a493-b22f5b16053e.png)
