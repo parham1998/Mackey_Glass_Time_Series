@@ -70,8 +70,8 @@ w2 = np.random.uniform(low=-1, high=1, size=(l1_neurons, l2_neurons))
 lr = 0.2
 epochs = 50
 
-k1 = 0.6
-k2 = 0.4
+k1 = 0.8
+k2 = 0.6
 
 MSE_train = []
 MSE_validation = []
@@ -88,7 +88,7 @@ def Train(w1, w2):
         o1 = sigmoid(net1) # o1: (1, 5)
         # Layer 2
         net2 = np.matmul(o1, w2) # net2: (1, 1)
-        o2 = net2 # net2: (1, 1)
+        o2 = net2 # o2: (1, 1)
 
         output_train.append(o2[0])
 

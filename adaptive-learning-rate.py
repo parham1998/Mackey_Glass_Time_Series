@@ -89,7 +89,7 @@ def Train(w1, w2, lr1, lr2):
         o1 = sigmoid(net1) # o1: (1, 5)
         # Layer 2
         net2 = np.matmul(o1, w2) # net2: (1, 1)
-        o2 = net2 # net2: (1, 1)
+        o2 = net2 # o2: (1, 1)
 
         output_train.append(o2[0])
 

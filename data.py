@@ -50,6 +50,5 @@ for t in range(3, len(x)):
 
 with open('data.csv', 'w', encoding='UTF8', newline='') as f:
     writer = csv.writer(f)
-
     # write the data
     writer.writerows(data)

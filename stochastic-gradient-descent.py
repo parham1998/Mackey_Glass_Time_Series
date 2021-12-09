@@ -12,7 +12,7 @@ import timeit
 # Definition and derivation of sigmoid
 # =============================================================================
 def sigmoid(x):
-    return  1 /( 1 + (math.e)**(-1 * x))
+    return  1 / ( 1 + (math.e)**(-1 * x))
 
 def sigmoid_deriviate(x):
     a = sigmoid(x)
@@ -85,7 +85,7 @@ def Train(w1, w2):
         o1 = sigmoid(net1) # o1: (1, 5)
         # Layer 2
         net2 = np.matmul(o1, w2) # net2: (1, 1)
-        o2 = net2 # net2: (1, 1)
+        o2 = net2 # o2: (1, 1)
 
         output_train.append(o2[0])
 

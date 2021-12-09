@@ -60,6 +60,7 @@ input_dimension = np.shape(x_train)[1]
 l1_neurons = 5
 l2_neurons = 1
 
+np.random.seed(20)
 w1 = np.random.uniform(low=-1, high=1, size=(input_dimension, l1_neurons))
 w2 = np.random.uniform(low=-1, high=1, size=(l1_neurons, l2_neurons))
 
@@ -94,7 +95,7 @@ def Train(w1, w2):
         o1 = sigmoid(net1) # o1: (1, 5)
         # Layer 2
         net2 = np.matmul(o1, w2) # net2: (1, 1)
-        o2 = net2 # net2: (1, 1)
+        o2 = net2 # o2: (1, 1)
 
         output_train.append(o2[0])
 
@@ -106,8 +107,8 @@ def Train(w1, w2):
         #
         f_driviate = sigmoid_deriviate(net1)        
         
-        pw1 = -1 * np.matmul(trans(x), np.matmul(trans(w2), f_driviate));
-        pw2 = -1 * 1 * o1
+        pw1 = -1 * np.matmul(trans(x), np.matmul(trans(w2), f_driviate)); # pw1: (5, 3)
+        pw2 = -1 * o1 # pw2: (5, 1)
         
         a = np.reshape(pw1, (1, -1))
         b = np.reshape(pw2, (1, -1))
@@ -119,9 +120,10 @@ def Train(w1, w2):
     a = np.reshape(w1, (1, -1))
     b = np.reshape(w2, (1, -1))
     w_par1 = np.concatenate((a, b), 1)
-      
-    miu = np.matmul(trans(err_train), err_train)
-    hold = inv(np.add(np.matmul(trans(Jacobian), Jacobian), miu[0][0] * I))
+    
+    #
+    miu = np.matmul(trans(err_train), err_train)[0][0]
+    hold = inv(np.add(np.matmul(trans(Jacobian), Jacobian), miu * I))
     w_par1 = trans(np.subtract(trans(w_par1), lr*np.matmul(hold, np.matmul(trans(Jacobian), err_train))))
     
     a = w_par1[0, 0:np.shape(w1)[0] * np.shape(w1)[1]]
