@@ -37,7 +37,7 @@ This method is very similar to the SGD method but uses the previous step error t
 
 *3: adaptive learning rate* <br />
 In this method, we assign a different learning rate to each of the trainable parameters, which are called adaptive learning rates. For each element of the weights matrix, we consider a different learning rate, which is also trained during the learning process. (As I said before, this method has more learning parameters (twice as much as before), and MSE might fluctuate and need more time for training).
-![Screenshot (553)](https://user-images.githubusercontent.com/85555218/145407636-28acfd04-20b2-47f4-b72c-19b7c3385a7f.png)
+![145407636-28acfd04-20b2-47f4-b72c-19b7c3385a7f](https://user-images.githubusercontent.com/85555218/145830591-7faf3e4a-e07c-46ed-a168-ba2b5defc4dc.png)
 
 *4: levenberg marquardt* <br />
 This algorithm is a generalization of the Gauss-Newton algorithm, designed to increase the convergence speed of the second-order optimization. If 𝜇(𝑡) equals zero, the algorithm is the same as the Gauss-Newton algorithm, and if 𝜇(𝑡) is a large number, this algorithm is very similar to SGD. This is a batch-based method. In other words, unlike the above methods, we do not update the parameters after the arrival of the new training sample, but the parameters will be updated after the arrival of all the training samples. After each epoch, parameters are updated based on the jacobian matrix, which stores all epoch information. (This method is appropriate for the low number of data, and by increasing the data size, the volume of calculations increases sharply).
